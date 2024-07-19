@@ -24,8 +24,16 @@ public final class App {
         System.out.println("Velocidad actual = " + auto1.getVelocidadActual());
         auto1.desacelerar(50);
         System.out.println("Velocidad actual = " + auto1.getVelocidadActual());
+        auto1.acelerar(70);
+        System.out.println("Velocidad actual = " + auto1.getVelocidadActual());
+        auto1.acelerar(200); 
+        System.out.println("Multa actual = " + auto1.getMulta());
+        System.out.println("Tiene multas: " + auto1.tieneMultas());
+        System.out.println("Valor total de multas: " + auto1.valorTotalMultas());
         auto1.frenar();
         System.out.println("Velocidad actual = " + auto1.getVelocidadActual());
         auto1.desacelerar(20);
     }
 }
+
+

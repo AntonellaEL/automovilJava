@@ -14,7 +14,8 @@ public class Automovil {
     enum tipoColor {Blanco, Negro, Rojo, Naranja, Amarillo, Verde, Azul, Violeta};
     tipoColor color;
     int velocidadActual = 0;
-    boolean esAutomatico;  // New attribute
+    boolean esAutomatico;  
+    double multa = 0.0;  
 
     public Automovil(String marca, int modelo, int motor, tipoCom tipoCombustible, tipoA tipoAutomovil,
             int numeroPuertas, int cantidadAsientos, int velocidadMaxima, tipoColor color, int velocidadActual, boolean esAutomatico) {
@@ -28,7 +29,7 @@ public class Automovil {
         this.velocidadMaxima = velocidadMaxima;
         this.color = color;
         this.velocidadActual = velocidadActual;
-        this.esAutomatico = esAutomatico;  // Initialize the new attribute
+        this.esAutomatico = esAutomatico;  
     }
     
     public String getMarca() {
@@ -75,6 +76,10 @@ public class Automovil {
         return esAutomatico;
     }
 
+    public double getMulta() {
+        return multa;
+    }
+
     public void setMarca(String marca) {
         this.marca = marca;
     }
@@ -119,11 +124,16 @@ public class Automovil {
         this.esAutomatico = esAutomatico;
     }
 
+    public void setMulta(double multa) {
+        this.multa = multa;
+    }
+
     public void acelerar(int incrementoVelocidad) {
         if (velocidadActual + incrementoVelocidad < velocidadMaxima) {
             velocidadActual = velocidadActual + incrementoVelocidad;
         } else {
-            System.out.println("No se puede incrementar una velocidad superior a la máxima del automóvil");
+            multa += 50;  
+            System.out.println("No se puede incrementar una velocidad superior a la máxima del automóvil. Multa actual: " + multa);
         }
     }
 
@@ -143,6 +153,14 @@ public class Automovil {
         return distancia/velocidadActual;
     }
 
+    public boolean tieneMultas() {
+        return multa > 0;
+    }
+
+    public double valorTotalMultas() {
+        return multa;
+    }
+
     public void imprimir() {
         System.out.println("Marca = " + marca);
         System.out.println("Modelo = " + modelo);
@@ -154,6 +172,6 @@ public class Automovil {
         System.out.println("Velocidad máxima = " + velocidadMaxima);
         System.out.println("Color = " + color);
         System.out.println("Es automático = " + (esAutomatico ? "Sí" : "No"));
+        System.out.println("Multa actual = " + multa);
+    }
 }
-}
-
